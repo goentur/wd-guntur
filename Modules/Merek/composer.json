@@ -1,0 +1,31 @@
+{
+    "name": "nwidart/merek",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Merek\\": "",
+            "Modules\\Merek\\App\\": "app/",
+            "Modules\\Merek\\Database\\Factories\\": "database/factories/",
+            "Modules\\Merek\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Merek\\Tests\\": "tests/"
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "name": "Pengembalian",
+    "alias": "pengembalian",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Pengembalian\\app\\Providers\\PengembalianServiceProvider"
+    ],
+    "files": []
+}

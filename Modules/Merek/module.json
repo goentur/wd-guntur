@@ -1,0 +1,11 @@
+{
+    "name": "Merek",
+    "alias": "merek",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Merek\\app\\Providers\\MerekServiceProvider"
+    ],
+    "files": []
+}
