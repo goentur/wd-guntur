@@ -127,11 +127,12 @@ CREATE TABLE IF NOT EXISTS `model_has_roles` (
   CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table sewa_mobil.model_has_roles: ~2 rows (approximately)
+-- Dumping data for table sewa_mobil.model_has_roles: ~3 rows (approximately)
 /*!40000 ALTER TABLE `model_has_roles` DISABLE KEYS */;
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 	(1, 'App\\Models\\User', 1),
-	(2, 'App\\Models\\User', 2);
+	(2, 'App\\Models\\User', 2),
+	(2, 'App\\Models\\User', 3);
 /*!40000 ALTER TABLE `model_has_roles` ENABLE KEYS */;
 
 -- Dumping structure for table sewa_mobil.password_resets
@@ -181,9 +182,9 @@ CREATE TABLE IF NOT EXISTS `peminjamen` (
 -- Dumping data for table sewa_mobil.peminjamen: ~7 rows (approximately)
 /*!40000 ALTER TABLE `peminjamen` DISABLE KEYS */;
 INSERT INTO `peminjamen` (`id`, `user_id`, `mobil_id`, `tanggal_awal`, `tanggal_akhir`, `tanggal_pengembalian`, `status`, `tarif`, `total`, `created_at`, `updated_at`) VALUES
-	(1, 1, 1, '2023-12-19', '2023-12-20', NULL, 'b', 150000, 300000, '2023-12-19 19:00:48', '2023-12-19 19:00:50'),
-	(2, 1, 5, '2024-01-03', '2024-01-25', NULL, 'b', 150000, 300000, '2023-12-19 19:00:48', '2023-12-19 19:00:50'),
-	(3, 1, 5, '2024-01-28', '2024-01-30', NULL, 'b', 150000, 300000, '2023-12-19 19:00:48', '2023-12-19 19:00:50'),
+	(1, 2, 1, '2023-12-19', '2023-12-20', NULL, 'b', 150000, 300000, '2023-12-19 19:00:48', '2023-12-19 19:00:50'),
+	(2, 2, 5, '2024-01-03', '2024-01-25', NULL, 'b', 150000, 300000, '2023-12-19 19:00:48', '2023-12-19 19:00:50'),
+	(3, 2, 5, '2024-01-28', '2024-01-30', NULL, 'b', 150000, 300000, '2023-12-19 19:00:48', '2023-12-19 19:00:50'),
 	(4, 2, 1, '2023-12-17', '2023-12-18', '2023-12-19', 's', 250000, 500000, '2023-12-19 15:36:50', '2023-12-19 17:06:59'),
 	(6, 2, 3, '2023-12-24', '2023-12-31', NULL, 'x', 250000, 0, '2023-12-19 16:21:18', '2023-12-19 16:57:53'),
 	(7, 2, 3, '2023-12-24', '2023-12-31', NULL, 'b', 250000, 0, '2023-12-19 16:58:36', '2023-12-19 16:58:36'),
@@ -201,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `permissions` (
   UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table sewa_mobil.permissions: ~7 rows (approximately)
+-- Dumping data for table sewa_mobil.permissions: ~8 rows (approximately)
 /*!40000 ALTER TABLE `permissions` DISABLE KEYS */;
 INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
 	(1, 'dashboard', 'web', '2023-12-19 08:43:36', '2023-12-19 08:43:36'),
@@ -210,7 +211,8 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at
 	(4, 'peminjaman', 'web', '2023-12-19 08:43:37', '2023-12-19 08:43:37'),
 	(5, 'pengembalian', 'web', '2023-12-19 08:43:37', '2023-12-19 08:43:37'),
 	(6, 'pengguna', 'web', '2023-12-19 08:43:37', '2023-12-19 08:43:37'),
-	(7, 'peran pengguna', 'web', '2023-12-19 08:43:37', '2023-12-19 08:43:37');
+	(7, 'peran pengguna', 'web', '2023-12-19 08:43:37', '2023-12-19 08:43:37'),
+	(8, 'transaksi', 'web', '2023-12-20 07:50:56', '2023-12-20 07:50:56');
 /*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
 
 -- Dumping structure for table sewa_mobil.personal_access_tokens
@@ -248,7 +250,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
 -- Dumping data for table sewa_mobil.roles: ~2 rows (approximately)
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
 INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
-	(1, 'developer', 'web', '2023-12-19 08:43:37', '2023-12-19 08:43:37'),
+	(1, 'developer', 'web', '2023-12-19 08:43:37', '2023-12-20 07:51:06'),
 	(2, 'penyewa', 'web', '2023-12-19 08:43:37', '2023-12-19 08:43:37');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 
@@ -262,13 +264,14 @@ CREATE TABLE IF NOT EXISTS `role_has_permissions` (
   CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table sewa_mobil.role_has_permissions: ~7 rows (approximately)
+-- Dumping data for table sewa_mobil.role_has_permissions: ~8 rows (approximately)
 /*!40000 ALTER TABLE `role_has_permissions` DISABLE KEYS */;
 INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 	(2, 1),
 	(3, 1),
 	(6, 1),
 	(7, 1),
+	(8, 1),
 	(1, 2),
 	(4, 2),
 	(5, 2);
@@ -289,11 +292,12 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table sewa_mobil.users: ~2 rows (approximately)
+-- Dumping data for table sewa_mobil.users: ~3 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `deleted_at`, `created_at`, `updated_at`) VALUES
-	(1, 'Admin', 'a@mail.com', '2023-12-19 08:43:37', '$2y$10$1m4WSI1HVgy3iZL23CGx1eB5TOEUvMJJBQvfO.fIel25JK37WY4pi', 'G5qCH2dPHSnwl654HRslPv52rAOtZe1Z37eBHgklKh9hQWzcDPkZsUvXCOTm', NULL, '2023-12-19 08:43:37', '2023-12-19 08:43:37'),
-	(2, 'Penyewa', 'penyewa@mail.com', '2023-12-19 08:43:37', '$2y$10$HCesWiLiEX8AxjGF.mF1wu985pz7nY6DvV1rSfNDPm4Fd6NGcIQ5S', 'hTAam16ye6HwonhTMzg9mhfQCd5ryU1bG4LTAdU2Vr9ultS3ENbbZRfhFAuR', NULL, '2023-12-19 08:43:37', '2023-12-19 08:43:37');
+	(1, 'Admin', 'a@mail.com', '2023-12-19 08:43:37', '$2y$10$1m4WSI1HVgy3iZL23CGx1eB5TOEUvMJJBQvfO.fIel25JK37WY4pi', 'IGCqBhCcPVf8Cf7PdLsCcKPhnriqkRgcScsQ5SDadN29JKoJ2IkRNmg4Xqfp', NULL, '2023-12-19 08:43:37', '2023-12-19 08:43:37'),
+	(2, 'Penyewa', 'penyewa@mail.com', '2023-12-19 08:43:37', '$2y$10$HCesWiLiEX8AxjGF.mF1wu985pz7nY6DvV1rSfNDPm4Fd6NGcIQ5S', 'zEYd1qsfKPnMFLxtwH1e0bmhzVvkxpmOPEFlYfqn9xX9M6cG8dp3BLvoE7ce', NULL, '2023-12-19 08:43:37', '2023-12-19 08:43:37'),
+	(3, 'coba penyewa', 'coba@mail.com', NULL, '$2y$10$J64W3D2OTlShtU0mb.xHQuu.K.qgdfzJGkrBt3nZs1uc07qcmVaMW', NULL, NULL, '2023-12-20 08:30:49', '2023-12-20 08:30:49');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 -- Dumping structure for table sewa_mobil.user_details
@@ -310,10 +314,11 @@ CREATE TABLE IF NOT EXISTS `user_details` (
   CONSTRAINT `user_details_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table sewa_mobil.user_details: ~1 rows (approximately)
+-- Dumping data for table sewa_mobil.user_details: ~2 rows (approximately)
 /*!40000 ALTER TABLE `user_details` DISABLE KEYS */;
 INSERT INTO `user_details` (`id`, `user_id`, `alamat`, `telp`, `sim`, `created_at`, `updated_at`) VALUES
-	(1, 2, 'pekalongan', '808980', '9080808', '2023-12-19 15:28:22', '2023-12-19 15:28:22');
+	(1, 2, 'pekalongan', '808980', '9080808', '2023-12-19 15:28:22', '2023-12-19 15:28:22'),
+	(2, 3, 'pekalongan', '085201365883', '1105616565', '2023-12-20 08:31:20', '2023-12-20 08:31:20');
 /*!40000 ALTER TABLE `user_details` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
