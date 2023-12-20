@@ -23,9 +23,10 @@ class DatabaseSeeder extends Seeder
         Permission::create(['name' => 'pengembalian']);
         Permission::create(['name' => 'pengguna']);
         Permission::create(['name' => 'peran pengguna']);
+        Permission::create(['name' => 'transaksi']);
 
         $roleDeveloper = Role::create(['name' => 'developer']);
-        $roleDeveloper->syncPermissions(['peran pengguna', 'pengguna', 'merek', 'mobil']);
+        $roleDeveloper->syncPermissions(['peran pengguna', 'pengguna', 'merek', 'mobil', 'transaksi']);
 
         $rolePenyewa = Role::create(['name' => 'penyewa']);
         $rolePenyewa->syncPermissions(['dashboard', 'peminjaman', 'pengembalian']);
