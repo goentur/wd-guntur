@@ -1,8 +1,8 @@
-RUN : git clone git@github.com:goentur/adminkit-pro.git
+RUN : git clone git@github.com:goentur/wd-guntur.git
 
 ATAU
 
-RUN : git clone https://github.com/goentur/adminkit-pro.git
+RUN : git clone https://github.com/goentur/wd-guntur.git
 
 RUN : composer install
 
@@ -18,6 +18,14 @@ RUN : npm run dev
 
 LOGIN
 
-email : dev@mail.com
+ADMIN
+
+email : a@mail.com
 
 password : a
+
+PENYEWA
+
+email : penyewa@mail.com
+
+password : penyewa@mail.com

@@ -13,4 +13,8 @@ class Peminjaman extends Model
     {
         return $this->belongsTo(Mobil::class)->with('merek');
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class)->with('userDetail');
+    }
 }

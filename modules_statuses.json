@@ -6,5 +6,6 @@
     "Mobil": true,
     "Merek": true,
     "Peminjaman": true,
-    "Pengembalian": true
+    "Pengembalian": true,
+    "Transaksi": true
 }

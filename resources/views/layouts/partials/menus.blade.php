@@ -72,4 +72,21 @@
             </li>
         @endcan
     @endcanany
+    @canany(['transaksi'])
+        <li class="sidebar-header">
+            Transaksi
+        </li>
+        @can('transaksi')
+            <li class="sidebar-item{{ request()->is('transaksi*') ? ' active' : '' }}">
+                <a data-bs-target="#transaksi" data-bs-toggle="collapse" class="sidebar-link{{ request()->is('transaksi*') ? '' : ' collapsed' }}">
+                    <i class="align-middle" data-feather="dollar-sign"></i> <span class="align-middle">transaksi</span>
+                </a>
+                <ul id="transaksi" class="sidebar-dropdown list-unstyled collapse{{ request()->is('transaksi*') ? ' show' : '' }}" data-bs-parent="#sidebar">
+                    <li class="sidebar-item{{ request()->is('transaksi/booking*') ? ' active' : '' }}"><a class="sidebar-link" href="{{ route('transaksi.booking.index') }}">Booking</a></li>
+                    <li class="sidebar-item{{ request()->is('transaksi/belum-selesai*') ? ' active' : '' }}"><a class="sidebar-link" href="{{ route('transaksi.belum-selesai.index') }}">Belum selesai</a></li>
+                    <li class="sidebar-item{{ request()->is('transaksi/selesai*') ? ' active' : '' }}"><a class="sidebar-link" href="{{ route('transaksi.selesai.index') }}">Selesai</a></li>
+                </ul>
+            </li>
+        @endcan
+    @endcanany
 </ul>
